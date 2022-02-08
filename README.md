@@ -12,7 +12,7 @@
   <p align="center">
     Ny tanjona zany dia ny mba hahita ny fotoana sisa ijanonana ato ampiasana!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Zala contributeur»</strong></a>
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>«Zala contributeur»</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">Asio Demo</a>
