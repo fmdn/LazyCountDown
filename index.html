@@ -9,23 +9,63 @@ var countDownDate = new Date("Feb 11, 2022 17:30:00").getTime();
 var todaysdate = new Date();
 var today = todaysdate.getFullYear() + ' ' + todaysdate.getMonth() + ' ' +  todaysdate.getDate();
 var pausemidi = new Date("Feb " + todaysdate.getDate() + ", 22 12:30:00");
-var pausematin = new Date("Feb " + todaysdate.getDate() + ", 22 10:0:00");
+var pausematin = new Date("Feb " + todaysdate.getDate() + ", 22 10:00:00");
+var pausepm = new Date("Feb " + todaysdate.getDate() + ", 22 15:00:00");
 // Update the count down every 1 second
 var x = setInterval(function() {
 
   // Get today's date and time
   var now = new Date().getTime();
   // Find the distance between now and the count down date
-  var distance = pausemidi - now;
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var distance = pausematin - now;
+  if(distance > 0)
+  {
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
-  document.getElementById("pausemidi").innerHTML = "Pause midi : " + days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+    // Display the result in the element with id="demo"
+    document.getElementById("pausemidi").innerHTML = "Pause Matin : " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+  }
+  else
+  {
+    distance = pausemidi - now;
+    if(distance > 0)
+    {
+      // Time calculations for days, hours, minutes and seconds
+      days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("pausemidi").innerHTML = "Pause midi : " + hours + "h "
+      + minutes + "m " + seconds + "s ";  
+    }
+    else
+    {
+      distance = pausepm - now;
+      if(distance > 0)
+      {
+        // Time calculations for days, hours, minutes and seconds
+        days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("pausemidi").innerHTML = "Pause midi : " + hours + "h "
+        + minutes + "m " + seconds + "s "; 
+        
+        document.getElementById("pausemidi").innerHTML = "Pause PM : " + hours + "h "
+        + minutes + "m " + seconds + "s ";  
+      }
+      else
+      {
+        document.getElementById("pausemidi").innerHTML = "Kely sisa dia hody";
+      }
+    }
+  }
   // Find the distance between now and the count down date
   distance = countDownDate - now;
 
