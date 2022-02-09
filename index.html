@@ -1,20 +1,22 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
-<p id="demo" style="font-family: Poppins; font-size: 100px; text-align:center; font-weight:bold; margin-top:20%; color:#666666;"></p>
+<p id="pausemidi" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#afafaf;"></p>
+<p id="demo" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#666666;"></p>
 
 
 <script>
 // Set the date we're counting down to
 var countDownDate = new Date("Feb 11, 2022 17:30:00").getTime();
-
+var todaysdate = new Date();
+var today = todaysdate.getFullYear() + ' ' + todaysdate.getMonth() + ' ' +  todaysdate.getDate();
+var pausemidi = new Date("Feb " + todaysdate.getDate() + ", 22 12:30:00");
+var pausematin = new Date("Feb " + todaysdate.getDate() + ", 22 10:0:00");
 // Update the count down every 1 second
 var x = setInterval(function() {
 
   // Get today's date and time
   var now = new Date().getTime();
-
   // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
+  var distance = pausemidi - now;
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -22,13 +24,24 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  document.getElementById("pausemidi").innerHTML = "Pause midi : " + days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  // Find the distance between now and the count down date
+  distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("demo").innerHTML = "Zoma : " + days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
 
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.getElementById("demo").innerHTML = "Ndao mody amzay";
   }
 }, 1000);
 </script>
