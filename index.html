@@ -1,52 +1,70 @@
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
-<p id="pausemidi" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#afafaf;"></p>
-<p id="demo" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#666666;"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <p id="pausemidi" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#afafaf;">
+    <span id="daysKaly"></span>
+    <span id="hoursKaly"></span>
+    <span id="minutesKaly"></span>
+    <span id="secondsKaly"></span>
+  </p>
 
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Feb 11, 2022 17:30:00").getTime();
-var todaysdate = new Date();
-var today = todaysdate.getFullYear() + ' ' + todaysdate.getMonth() + ' ' +  todaysdate.getDate();
-var pausemidi = new Date("Feb " + todaysdate.getDate() + ", 22 12:30:00");
-var pausematin = new Date("Feb " + todaysdate.getDate() + ", 22 10:00:00");
-var pausepm = new Date("Feb " + todaysdate.getDate() + ", 22 15:00:00");
-// Update the count down every 1 second
-var x = setInterval(function() {
+  <p id="demo" style="font-family: Poppins; font-size: 50px; text-align:center; font-weight:bold; margin-top:5%; color:#666666;">
+    <span id="daysRava"></span>
+    <span id="hoursRava"></span>
+    <span id="minutesRava"></span>
+    <span id="secondsRava"></span>
+  </p>
+  
+  <style>
+    body {
+      background-color: black;
+    }
+    span {
+      background-color: orange;
+      border-radius: 50%;
+      padding: 5%;
+      margin: 2%;
+    }
+  </style>
 
-  // Get today's date and time
-  var now = new Date().getTime();
-  // Find the distance between now and the count down date
-  var distance = pausematin - now;
-  if(distance > 0)
-  {
-    
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the result in the element with id="demo"
-    document.getElementById("pausemidi").innerHTML = "Pause Matin : " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-  }
-  else
-  {
-    distance = pausemidi - now;
+  <script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("Feb 11, 2022 17:30:00").getTime();
+  var todaysdate = new Date();
+  var today = todaysdate.getFullYear() + ' ' + todaysdate.getMonth() + ' ' +  todaysdate.getDate();
+  var pausemidi = new Date("Feb " + todaysdate.getDate() + ", 22 12:30:00");
+  var pausematin = new Date("Feb " + todaysdate.getDate() + ", 22 10:00:00");
+  var pausepm = new Date("Feb " + todaysdate.getDate() + ", 22 15:00:00");
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var distance = pausematin - now;
     if(distance > 0)
     {
+      
       // Time calculations for days, hours, minutes and seconds
-      days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("pausemidi").innerHTML = "Pause midi : " + hours + "h "
-      + minutes + "m " + seconds + "s ";  
+  
+      // Display the result in the element with id="demo"
+      document.getElementById("pausemidi").innerHTML = "Pause Matin : " + hours + "h "
+      + minutes + "m " + seconds + "s ";
     }
     else
     {
-      distance = pausepm - now;
+      distance = pausemidi - now;
       if(distance > 0)
       {
         // Time calculations for days, hours, minutes and seconds
@@ -55,33 +73,57 @@ var x = setInterval(function() {
         minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         document.getElementById("pausemidi").innerHTML = "Pause midi : " + hours + "h "
-        + minutes + "m " + seconds + "s "; 
-        
-        document.getElementById("pausemidi").innerHTML = "Pause PM : " + hours + "h "
         + minutes + "m " + seconds + "s ";  
       }
       else
       {
-        document.getElementById("pausemidi").innerHTML = "Kely sisa dia hody";
+        distance = pausepm - now;
+        if(distance > 0)
+        {
+          // Time calculations for days, hours, minutes and seconds
+          days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          // document.getElementById("pausemidi").innerHTML = "Pause midi : " + hours + "h " + minutes + "m " + seconds + "s "; 
+          document.getElementById("daysKaly").innerHTML = days + "d";
+          document.getElementById("hoursKaly").innerHTML = hours + "h";
+          document.getElementById("minutesKaly").innerHTML = minutes + "m";
+          document.getElementById("secondsKaly").innerHTML = seconds + "s";
+          
+          // document.getElementById("pausemidi").innerHTML = "Pause PM : " + hours + "h " + minutes + "m " + seconds + "s ";  
+        }
+        else
+        {
+          document.getElementById("pausemidi").innerHTML = "Kely sisa dia hody";
+        }
       }
     }
-  }
-  // Find the distance between now and the count down date
-  distance = countDownDate - now;
+    // Find the distance between now and the count down date
+    distance = countDownDate - now;
+  
+    // Time calculations for days, hours, minutes and seconds
+    days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+    // document.getElementById("demo").innerHTML = "Zoma : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    document.getElementById("daysRava").innerHTML = days + "d";
+    document.getElementById("hoursRava").innerHTML = hours + "h";
+    document.getElementById("minutesRava").innerHTML = minutes + "m";
+    document.getElementById("secondsRava").innerHTML = seconds + "s";
 
-  // Time calculations for days, hours, minutes and seconds
-  days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "Ndao mody amzay";
+      alert("NDAO MODY AMZAY OH !!!");
+    }
+  }, 1000);
+  </script>
+</body>
+</html>
 
-  document.getElementById("demo").innerHTML = "Zoma : " + days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "Ndao mody amzay";
-  }
-}, 1000);
-</script>
+
